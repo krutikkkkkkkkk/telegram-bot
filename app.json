@@ -1,0 +1,6 @@
+{
+  "name": "Telegram-bot API",
+  "description": "A simple php powered telegram bot",
+  "repository": "https://github.com/reboot13-git/telegram-bot",
+  "keywords": ["php", "telegram", "bot", "api"]
+}
