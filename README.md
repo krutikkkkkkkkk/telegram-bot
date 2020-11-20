@@ -30,6 +30,8 @@ https://api.telegram.org/bot **$apiToken**/setWebhook?url= **$url** /index.php
 
 - [x] Youtube Search
 
+- [x] Github User Search
+
 - [x] World Mirror Search
 
 - [x] Broadcast (only selected ids)
