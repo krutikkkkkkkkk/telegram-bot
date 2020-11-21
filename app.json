@@ -8,7 +8,6 @@
     "Bot",
     "API"
   ],
-  { 
 "env": {
     "API_TOKEN": {
       "description": "Get API Token From @botfather.",
