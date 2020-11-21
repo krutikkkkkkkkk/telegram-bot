@@ -341,6 +341,7 @@ else {
         "sec-fetch-mode: navigate",
         "sec-fetch-site: none",
         "sec-fetch-user: ?1",
+'User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0'
 	],
 ]);
 
