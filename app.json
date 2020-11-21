@@ -4,10 +4,3 @@
   "repository": "https://github.com/reboot13-git/telegram-bot",
   "keywords": ["PHP", "Telegram", "bot"]
 }
-{ 
-"env": {
-    "API_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
-    }
-}
