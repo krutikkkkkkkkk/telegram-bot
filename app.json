@@ -1,13 +1,13 @@
 {
   "name": "Telegram Bot",
   "description": "A simple PHP powered Telegram Bot.",
+  "repository": "https://github.com/reboot13-git/telegram-bot",
   "keywords": [
     "PHP",
     "Telegram",
     "Bot",
     "API"
   ],
-{
   "env": {
     "API_TOKEN": {
       "description": "Get API Token From @botfather.",
