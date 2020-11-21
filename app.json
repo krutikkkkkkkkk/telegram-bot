@@ -1,1 +1,14 @@
-
+{
+  "name": "Telegram Bot",
+  "description": "A simple PHP powered Telegram Bot.",
+  "keywords": [
+    "PHP",
+    "Telegram",
+    "Bot",
+    "API"
+  ],
+{
+  "env": {
+    "API_TOKEN": {
+      "description": "Get API Token From @botfather.",
+    },
