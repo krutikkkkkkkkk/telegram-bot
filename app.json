@@ -4,10 +4,10 @@
   "description": "A simple php powered telegram bot",	  "description": "Telegram's sassiest group manager. Modular Telegram group management bot!",
   "repository": "https://github.com/reboot13-git/telegram-bot",	  "keywords": [
   "keywords": ["php", "telegram", "bot", "api"],
-  "repository": "https://github.com/reboot13-git/telegram-bot",
-  "env": {
+  "repository" : "https://github.com/reboot13-git/telegram-bot",
+  "env" : {
     "ENV": {
-      "description": "Setting this to ANYTHING will enable env variables",
+      "description" : "Setting this to ANYTHING will enable env variables",
       "value": "ANYTHING"
     },
     "TOKEN": {
