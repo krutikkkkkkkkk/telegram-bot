@@ -319,6 +319,45 @@ else {
 }
     }
 
+   if(strpos($message, "/inbtc") === 0){
+        $inbtc = substr($message, 7);
+   $curl = curl_init();
+   curl_setopt_array($curl, [
+	CURLOPT_URL => "https://blockchain.info/tobtc?currency=USD&value=$inbtc",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_POSTFIELDS => "currency=USD&value=$inbtc",
+	CURLOPT_HTTPHEADER => [
+		"authority: blockchain.info",
+		"accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+		"accept-language: en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7",
+		"pragma: no-cache",
+        "sec-fetch-dest: document",
+        "sec-fetch-mode: navigate",
+        "sec-fetch-site: none",
+        "sec-fetch-user: ?1",
+	],
+]);
+
+$result = curl_exec($curl);
+curl_close($curl);
+$data = json_decode($result, true);
+
+  if ($data != null) {
+        send_message($chat_id, " $data BTC");
+    }
+else {
+    send_message($chat_id, "Enter Valid Value");
+}
+   }
+    
+
+
 
      ///Send Message (Global)
     function send_message($chat_id, $message){
