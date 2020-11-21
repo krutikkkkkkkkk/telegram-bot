@@ -1,7 +1,6 @@
-
 {
   "name": "Telegram-bot",
   "description": "A simple PHP powered Telegram Bot.",
-  "keywords": [ "telegram", "bot", "api", "PHP"],
-  "repository": "hhttps://github.com/reboot13-git/telegram-bot",
+  "repository": "https://github.com/reboot13-git/telegram-bot",
+  "keywords": ["PHP", "Telegram", "bot"]
 }
