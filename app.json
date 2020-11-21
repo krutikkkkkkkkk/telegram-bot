@@ -2,37 +2,6 @@
 {
   "name": "Telegram-bot",
   "description": "A simple PHP powered Telegram Bot.",
-  "keywords": [
-    "telegram",
-    "bot",
-    "api",
-    "PHP"
-  ],
+  "keywords": [ "telegram", "bot", "api", "PHP"],
   "repository": "hhttps://github.com/reboot13-git/telegram-bot",
-  "env": {
-    "ENV": {
-      "description": "Setting this to ANYTHING will enable env variables",
-      "value": "ANYTHING"
-    },
-    "TOKEN": {
-      "description": "Your bot token, as a string.",
-      "value": ""
-    },
-    "OWNER_ID": {
-      "description": "An integer of consisting of your owner ID",
-      "value": "1171876903"
-    },
-    "OWNER_USERNAME": {
-      "description": "Your username",
-      "value": "reboot13"
-    },
-    "WEBHOOK": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode messages",
-      "value": "ANYTHING"
-    },
-    "URL": {
-      "description": "The Heroku App URL similar to https://<appname>.herokuapp.com/",
-      "value": ""
-    },
-  }
 }
