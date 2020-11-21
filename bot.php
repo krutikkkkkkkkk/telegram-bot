@@ -9,17 +9,20 @@
     $username = $update["message"]["from"]["username"];
     $firstname = $update["message"]["from"]["first_name"];
     $message_id = $upadte["message"]["message_id"];
+    $bot_name = "" //your bot name
  /// for broadcasting in Channel
-$channel_id = "-1001351780832";
+$channel_id = "-1001351780832"; 
 
     //Extact match Commands
     if($message == "/start"){
-        send_message($chat_id, "Hey $firstname Join @worldbins1 \nNetwork - @world_network1 \nUse /cmds to view commands \nBot by @reboot13 ");
+        send_message($chat_id, "Hey $firstname I am $bot_name \nSupport Group - @world_bots \nUse /cmds to view commands \nBot developed by @reboot13 ");
     }
 
     if($message == "/cmds"){
         send_message($chat_id, "
           /search <input> (Google search)
+          \n/syt <query> (Youtube Search)
+          \n/dict <word> (Dicitonary)
           \n/smirror <name> (Search Movies/Series)
           \n/bin <bin> (Bin Data)
           \n/weather <name of your city> (Current weather Status)
@@ -28,6 +31,7 @@ $channel_id = "-1001351780832";
           \n/time (current time)
           \n/git <username>
           \n/info (User Info)
+          \n/donate (Donate to Creator)
           ");
     }
 
@@ -48,6 +52,12 @@ $channel_id = "-1001351780832";
         send_message($chat_id, "User Info \nName: $firstname\nID:$id \nUsername: @$username");
     }
 
+if($message == "/help"){
+        send_message($chat_id, "Contact @Reboot13");
+    }
+if($message == "/donate"){
+        send_message($chat_id, "https://reboot13.hashnode.com/donate");
+    }
 
 ///Commands with text
 
