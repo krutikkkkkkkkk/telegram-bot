@@ -2,9 +2,11 @@
   "name": "Telegram-bot",
   "description": "A simple PHP powered Telegram Bot.",
   "repository": "https://github.com/reboot13-git/telegram-bot",
-  "keywords": ["PHP", "Telegram", "bot"],
+  "keywords": ["PHP", "Telegram", "bot"]
+}
+{ 
 "env": {
-    "SECRET_TOKEN": {
+    "API_TOKEN": {
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
     }
