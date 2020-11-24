@@ -4,3 +4,7 @@
   "repository": "https://github.com/reboot13-git/telegram-bot",
   "keywords": ["PHP", "Telegram", "bot"]
 }
+"env": {
+        "API_TOKEN": {
+            "description": "Telegram Bot API Token -Get it from @BotFather"
+        }
