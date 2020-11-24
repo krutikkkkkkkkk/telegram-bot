@@ -1,22 +1,4 @@
 {
-  "name": "",
-  "description": "",
-  "repository": "",
-  "keywords": ["PHP", "Telegram", "bot"]
-}
-"env": {
-        "API_TOKEN": {
-            "description": "Telegram Bot API Token -Get it from @BotFather"
-        }
-"formation": {
-    "web": {
-      "quantity": 1,
-      "size": "standard-1x"
-    }
-  },
-  "image": "heroku/ruby"
-
-{
   "name": "Telegram-bot",
   "description": "A simple PHP powered Telegram Bot.",
   "keywords": [
