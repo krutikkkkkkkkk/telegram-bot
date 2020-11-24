@@ -1,7 +1,7 @@
 {
-  "name": "Telegram-bot",
-  "description": "A simple PHP powered Telegram Bot.",
-  "repository": "https://github.com/reboot13-git/telegram-bot",
+  "name": "",
+  "description": "",
+  "repository": "",
   "keywords": ["PHP", "Telegram", "bot"]
 }
 "env": {
@@ -15,3 +15,28 @@
     }
   },
   "image": "heroku/ruby"
+
+{
+  "name": "Telegram-bot",
+  "description": "A simple PHP powered Telegram Bot.",
+  "keywords": [
+    "PHP",
+    "Telegram",
+    "Bot"
+  ],
+  "website": "https://reboot13-git.github.io/telegram-bot/",
+  "repository": "https://github.com/reboot13-git/telegram-bot",
+  "env": {
+    "API_TOKEN": {
+      "description": "Telegram Bot API Token, Get it from @BotFather",
+      "generator": "secret"
+    },
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/ruby",
+}
