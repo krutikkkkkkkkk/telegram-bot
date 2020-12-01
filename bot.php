@@ -56,7 +56,7 @@ if($message == "/help"){
         send_message($chat_id, "Contact @Reboot13");
     }
 if($message == "/donate"){
-        send_message($chat_id, "https://reboot13.hashnode.com/donate");
+        send_message($chat_id, "https://reboot13.hashnode.dev/donate");
     }
 
 ///Commands with text
