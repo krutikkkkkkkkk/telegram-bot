@@ -8,7 +8,6 @@
     $id = $update["message"]["from"]["id"];
     $username = $update["message"]["from"]["username"];
     $firstname = $update["message"]["from"]["first_name"];
-    $message_id = $upadte["message"]["message_id"];
     $bot_name = "" ;//your bot name
  /// for broadcasting in Channel
 $channel_id = "-1001351780832"; 
@@ -364,14 +363,14 @@ else {
     function send_message($chat_id, $message){
         $apiToken =  "API_TOKEN";
         $text = urlencode($message);
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text");
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&text=$text");
     }
     
 //Send Messages with Markdown (Global)
       function send_MDmessage($chat_id, $message){
        $apiToken =  "API_TOKEN";
         $text = urlencode($message);
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&text=$message&parse_mode=Markdown");
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&text=$text&parse_mode=Markdown");
     }
     
 
