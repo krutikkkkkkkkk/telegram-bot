@@ -355,6 +355,55 @@ else {
     send_message($chat_id, "Enter Valid Value");
 }
    }
+
+if(strpos($message, "/shorturl") === 0){
+$shorturl = substr($message, 10);
+$curl = curl_init();
+curl_setopt_array($curl, [
+CURLOPT_URL => "https://cutt.ly/scripts/shortenUrl.php",
+CURLOPT_POSTFIELDS =>"     ",
+CURLOPT_RETURNTRANSFER => true,
+CURLOPT_FOLLOWLOCATION => true,
+CURLOPT_ENCODING => "------WebKitFormBoundaryv2WBBQPOwQhLOls0
+Content-Disposition: form-data; name="url"
+
+$shorturl
+------WebKitFormBoundaryv2WBBQPOwQhLOls0
+Content-Disposition: form-data; name="domain"
+
+0
+------WebKitFormBoundaryv2WBBQPOwQhLOls0--",
+CURLOPT_MAXREDIRS => 10,
+CURLOPT_TIMEOUT => 30,
+CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST => "GET",
+CURLOPT_HTTPHEADER => [
+    "accept: */*",
+"accept-language: en-US,en;q=0.9",
+"content-type: multipart/form-data; boundary=----WebKitFormBoundaryv2WBBQPOwQhLOls0",
+"cookie: __cfduid=d79cfa665a19acbe4a59cdf48674bf3cb1608033162; PHPSESSID=nonoaosn0ra3v592ggdqrtg1am; _ga=GA1.2.744713507.1608033165; _gid=GA1.2.277358472.1608033165; _gat_gtag_UA_112763434_1=1; cookies_accepted=T",
+"origin: https://cutt.ly",
+"referer: https://cutt.ly/",
+"sec-ch-ua: "Google Chrome";v="87", " Not;A Brand";v="99", "Chromium";v="87"",
+"sec-ch-ua-mobile: ?0",
+"sec-fetch-dest: empty",
+"sec-fetch-mode: cors",
+"sec-fetch-site: same-origin",
+"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"   
+],
+]);
+
+$result = curl_exec($curl);
+curl_close($curl);
+$data = json_decode($result, true);
+
+
+
+send_MDmessage($chat_id, "***Input Url= $shorturl 
+    Results = $data
+    Url Shortend By @$username ***");
+}
+
     
 
 
