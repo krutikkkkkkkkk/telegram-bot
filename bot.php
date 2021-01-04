@@ -425,7 +425,7 @@ send_MDmessage($chat_id, "***Input Url= $shorturl
 
 ///Send Message to Channel
       function send_Cmessage($channel_id, $message){
-       $apiToken =  "API_TOKEN";
+       $apiToken =  "yhtgrfed";
         $text = urlencode($message);
         file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$channel_id&text=$text");
     }
