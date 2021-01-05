@@ -35,8 +35,7 @@ $channel_id = "-1001351780832";
     }
 
     if($message == "/dice"){
-        $number = rand(1,6);
-        send_message($chat_id, $number);
+        sendDice($chat_id, "🎲");
     }
     if($message == "/date"){
         $date = date("d/m/y");
@@ -428,5 +427,10 @@ send_MDmessage($chat_id, "***Input Url= $shorturl
        $apiToken =  "API_TOKEN";
         $text = urlencode($message);
         file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$channel_id&text=$text");
+    }
+
+ function sendDice($chat_id, $message){
+       $apiToken =  "API_TOKEN";
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendDice?chat_id=$chat_id&emoji=$message");
     }
 ?>
