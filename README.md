@@ -8,7 +8,7 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 $url - your hosted file url
 
-https://api.telegram.org/bot **$apiToken**/setWebhook?url= **$url** /index.php
+https://api.telegram.org/bot **$apiToken**/setWebhook?url= **$url** /bot.php
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
