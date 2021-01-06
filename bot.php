@@ -263,6 +263,57 @@ else {
            send_message($chat_id, "User Not Found \nInvalid github username checked by @$username");
 }
     }
+///Dicitonary API
+if(strpos($message, "/dict") === 0){	
+        $dict = substr($message, 6);	
+   $curl = curl_init();	
+   curl_setopt_array($curl, [	
+	CURLOPT_URL => "https://api.dictionaryapi.dev/api/v2/entries/en/$dict",	
+	CURLOPT_RETURNTRANSFER => true,	
+	CURLOPT_FOLLOWLOCATION => true,	
+	CURLOPT_ENCODING => "",	
+	CURLOPT_MAXREDIRS => 10,	
+	CURLOPT_TIMEOUT => 30,	
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,	
+	CURLOPT_CUSTOMREQUEST => "GET",	
+	CURLOPT_HTTPHEADER => [	
+		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",	
+        "Accept-Language: en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7",	
+        "Host: oxforddictionaryapi.herokuapp.com",	
+        "Sec-Fetch-Dest: empty",	
+        "Sec-Fetch-Mode: cors",	
+        "Sec-Fetch-Site: cross-site",	
+        ],	
+]);	
+
+
+  $dictionary = curl_exec($curl);	
+  curl_close($curl);	
+
+$out = json_decode($dictionary, true);	
+$word = $out[0]['word'];	
+$noun= $out[0]['meaning']['noun'][0]['definition'];	
+$verb = $out[0]['meaning']['verb'][0]['definition'];	
+$adjective = $out[0]['meaning']['adjective'][0]['definition'];	
+$adverb = $out[0]['meaning']['adverb'][0]['definition'];	
+$pronoun = $out[0]['meaning']['pronoun'][0]['definition'];	
+
+if ($word = $dict) {	
+        send_message($chat_id, "	
+Word: $word 	
+Noun : $noun	
+Pronoun: $pronoun 	
+Verb : $verb 	
+Adjective: $adjective 	
+Adverb: $adverb 	
+Checked By @$username ");	
+    }	
+    else {	
+        send_message($chat_id, "Invalid Input");	
+    }	
+}	
+
+
 
 
      ///Send Message (Global)
