@@ -10,7 +10,7 @@
     $firstname = $update["message"]["from"]["first_name"];
     $bot_name = "" ;//your bot name
  /// for broadcasting in Channel
-$channel_id = "-1001351780832"; 
+$channel_id = "-100xxxxxxxxxx"; 
 
     //Extact match Commands
     if($message == "/start"){
@@ -263,6 +263,7 @@ else {
            send_message($chat_id, "User Not Found \nInvalid github username checked by @$username");
 }
     }
+
 ///Dicitonary API
 if(strpos($message, "/dict") === 0){	
         $dict = substr($message, 6);	
@@ -299,7 +300,7 @@ $adverb = $out[0]['meaning']['adverb'][0]['definition'];
 $pronoun = $out[0]['meaning']['pronoun'][0]['definition'];	
 
 if ($word = $dict) {	
-        send_message($chat_id, "	
+    send_message($chat_id, "	
 Word: $word 	
 Noun : $noun	
 Pronoun: $pronoun 	
