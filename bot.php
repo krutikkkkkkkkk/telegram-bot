@@ -314,6 +314,37 @@ Checked By @$username ");
     }	
 }	
 
+if(strpos($message, "/inbtc") === 0){
+$inbtc = substr($message, 7);
+   $curl = curl_init();
+   curl_setopt_array($curl, [
+CURLOPT_URL => "https://blockchain.info/tobtc?currency=USD&value=$inbtc",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 50,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => [
+        "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
+        "cookie: __cfduid=d922bc7ae073ccd597580a4cfc5e562571614140229",
+        "referer: https://www.blockchain.com/",
+        "sec-fetch-dest: document",
+        "sec-fetch-mode: navigate",
+        "sec-fetch-site: cross-site",
+        "sec-fetch-user: ?1",
+        "upgrade-insecure-requests: 1",
+        "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
+  ],
+]);
+$valueinbtc = curl_exec($curl);
+curl_close($curl);
+$outvalue = json_decode($valueinbtc, true);
+
+send_MDmessage($chat_id, "***USD = $inbtc \nBTC = $outvalue \nValue checked by @$username ***");
+}
 
 
 
