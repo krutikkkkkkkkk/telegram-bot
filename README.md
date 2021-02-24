@@ -30,6 +30,8 @@ https://api.telegram.org/bot **$apiToken**/setWebhook?url= **$url** /bot.php
 
 - [x] Youtube Search
 
+- [x] USD to BTC (Blockchain Exchange Rate)
+
 - [x] Github User Search
 
 - [x] World Mirror Search
