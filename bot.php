@@ -1,4 +1,34 @@
 <?php
+
+
+set_time_limit(0);
+error_reporting(0);
+flush();
+$apiToken = $_ENV['BOT_TOKEN']; 
+
+  ///Send Message (Global)
+    function send_message($chat_id,$message_id, $message){
+        $text = urlencode($message);
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text");
+    }
+    
+//Send Messages with Markdown (Global)
+      function send_MDmessage($chat_id,$message_id, $message){
+        $text = urlencode($message);
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text&parse_mode=Markdown");
+    }
+///Send Message to Channel
+      function send_Cmessage($channel_id, $message){
+        $text = urlencode($message);
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$channel_id&text=$text");
+    }
+
+//Send Dice (dynamic emoji)
+function sendDice($chat_id,$message_id, $message){
+        file_get_contents("https://api.telegram.org/bot$apiToken/sendDice?chat_id=$chat_id&reply_to_message_id=$message_id&text=$message");
+    }
+
+
     date_default_timezone_set("Asia/kolkata");
     //Data From Webhook
     $content = file_get_contents("php://input");
@@ -463,31 +493,5 @@ Checked By @$username ***");
     }
 }
 
-
-     ///Send Message (Global)
-    function send_message($chat_id,$message_id, $message){
-        $apiToken = "   ";
-        $text = urlencode($message);
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text");
-    }
-    
-//Send Messages with Markdown (Global)
-      function send_MDmessage($chat_id,$message_id, $message){
-       $apiToken = "  ";
-        $text = urlencode($message);
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text&parse_mode=Markdown");
-    }
-///Send Message to Channel
-      function send_Cmessage($channel_id, $message){
-        $apiToken = "  ";
-        $text = urlencode($message);
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$channel_id&text=$text");
-    }
-
-//Send Dice (dynamic emoji)
-function sendDice($chat_id,$message_id, $message){
-        $apiToken = "  ";
-        file_get_contents("https://api.telegram.org/bot$apiToken/sendDice?chat_id=$chat_id&reply_to_message_id=$message_id&text=$message");
-    }
 
 ?>
