@@ -23,6 +23,8 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 - [x] Dice (`/dice`)
 
+- [x] Toss (Random Heads or Tails) (`/toss`)
+
 - [x] User Info (`/info`)
 
 - [x] BIN Data (`/bin xxxxx`)
@@ -45,7 +47,7 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 - [x] Github User Search (`/git <username>`)
 
-- [x] World Mirror Search (`smirror <query>`)
+- [x] World Mirror Search (`/smirror <query>`)
 
 - [x] Broadcast (only selected ids) (`/broadcast <message>`)
 
