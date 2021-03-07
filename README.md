@@ -27,7 +27,7 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 - [x] BIN Data (`/bin xxxxx`)
 
-- [x] Weather API (`/weather <city name`>
+- [x] Weather API (`/weather <city name>`)
 
 - [x] Dictionary API (`/dict <word>`)
 
