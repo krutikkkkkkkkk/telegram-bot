@@ -12,6 +12,9 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 `https://api.telegram.org/bot<Api Token>/setWebhook?url=<your hosted file url>/bot.php`
 
+## Tutorial
+[https://www.youtube.com/watch?v=KhQaiYwdnCA](https://www.youtube.com/watch?v=KhQaiYwdnCA)
+
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
 - [x] Date
