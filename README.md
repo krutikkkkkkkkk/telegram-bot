@@ -17,31 +17,37 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
-- [x] Date
+- [x] Date (/date)
 
-- [x] Time
+- [x] Time (/time)
 
-- [x] Dice
+- [x] Dice (/dice)
 
-- [x] User Info
+- [x] User Info (/info)
 
-- [x] BIN Data
+- [x] BIN Data (/bin xxxxx)
 
-- [x] Weather API
+- [x] Weather API (/weather <city name>
 
-- [x] Dictionary API
+- [x] Dictionary API (/dict <word>)
 
-- [x] Google search
+- [x] Google search (/search <query>)
 
-- [x] Youtube Search
+- [x] Youtube Search (/syt <query>)
 
-- [x] USD to BTC (Blockchain Exchange Rate)
+- [x] USD to BTC (Blockchain Exchange Rate) (/inbtc <amount in USD>)
 
-- [x] Github User Search
+- [x] BTC rate (/btcrate)
 
-- [x] World Mirror Search
+- [x] ETH rate (/ethrate)
 
-- [x] Broadcast (only selected ids)
+- [x] Download github Repository (/repodl <username/repo_name>)
+
+- [x] Github User Search (/git <username>)
+
+- [x] World Mirror Search (/smirror <query>)
+
+- [x] Broadcast (only selected ids) (/broadcast <message>)
 
 
 ## Reboot13
