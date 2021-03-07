@@ -1,7 +1,7 @@
 # Telegram Bot-Api
 
-Edit bot.php 
-$apiToken = "xXxXxXXXXXXXXxXxxxx";
+Edit `bot.php` 
+$apiToken = `"xXxXxXXXXXXXXxXxxxx";`
 
 Repository of [@github_rbot](https://telegram.me/github_rbot) 
 
@@ -17,41 +17,47 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
-- [x] Date (/date)
+- [x] Date (`/date`)
 
-- [x] Time (/time)
+- [x] Time (`/time`)
 
-- [x] Dice (/dice)
+- [x] Dice (`/dice`)
 
-- [x] User Info (/info)
+- [x] User Info (`/info`)
 
-- [x] BIN Data (/bin xxxxx)
+- [x] BIN Data (`/bin xxxxx`)
 
-- [x] Weather API (/weather <city name>
+- [x] Weather API (`/weather <city name`>
 
-- [x] Dictionary API (/dict <word>)
+- [x] Dictionary API (`/dict <word>`)
 
-- [x] Google search (/search <query>)
+- [x] Google search (`/search <query>`)
 
-- [x] Youtube Search (/syt <query>)
+- [x] Youtube Search (`/syt <query>`)
 
-- [x] USD to BTC (Blockchain Exchange Rate) (/inbtc <amount in USD>)
+- [x] USD to BTC (Blockchain Exchange Rate) (`/inbtc <amount in USD>`)
 
-- [x] BTC rate (/btcrate)
+- [x] BTC rate (`/btcrate`)
 
-- [x] ETH rate (/ethrate)
+- [x] ETH rate (`/ethrate`)
 
-- [x] Download github Repository (/repodl <username/repo_name>)
+- [x] Download github Repository (`/repodl <username/repo_name>`)
 
-- [x] Github User Search (/git <username>)
+- [x] Github User Search (`/git <username>`)
 
-- [x] World Mirror Search (/smirror <query>)
+- [x] World Mirror Search (`smirror <query>`)
 
-- [x] Broadcast (only selected ids) (/broadcast <message>)
+- [x] Broadcast (only selected ids) (`/broadcast <message>`)
 
 
 ## Reboot13
 
-[Telegram](https://telegram.me/reboot13)
+[Telegram](https://telegram.me/reboot13_dev)
+
+[Twitter](https://twitter.com/reboot13-dev)
+
+[Instagram](https://instagram.com/reboot13_dev)
+
+[LinkedIN](https://linkedin.com/in/reboot13)
 
 [Youtube](https://youtube.com/krutikraut)
