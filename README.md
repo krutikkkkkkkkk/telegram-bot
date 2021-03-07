@@ -54,7 +54,7 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 [Telegram](https://telegram.me/reboot13_dev)
 
-[Twitter](https://twitter.com/reboot13-dev)
+[Twitter](https://twitter.com/reboot13_dev)
 
 [Instagram](https://instagram.com/reboot13_dev)
 
