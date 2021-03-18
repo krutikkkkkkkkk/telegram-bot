@@ -122,11 +122,15 @@ if ($syt != null) {
 if (strpos($message, "/broadcast") === 0) {
 $broadcast = substr($message, 11);
 // id == (admins user id)
-if ($id == 1171876903 || $id == 1478297206 || $id == 654455829 || $id == 638178378 || $id == 971532801 ) {
+if ($id == 1171876903 /*|| $id == 1478297206 || $id == 654455829 || $id == 638178378 || $id == 971532801*/ ) { // || uncomment for multiple admins
   send_Cmessage($channel_id, $broadcast);
 }
 else {
     send_message($chat_id,$message_id, "You are not authorized to use this command");
+ // example
+///send_message("-100xxxxxxxxxx",$message_id, "You are not authorized to use this command");
+///send_message("@channel_username",$message_id, "You are not authorized to use this command");
+/// You can add as many channel and chat you want use the above format (make sure bot is promoted as admin in chat and channel)
 }
 
 }
