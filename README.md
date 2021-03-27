@@ -1,14 +1,14 @@
 # Telegram Bot-Api
 
 ## Heroku Deploy
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/reboot13-git/telegram-bot)
 
-Setting up webhook
+After Deploying App on Heroku - Setup Webhook
 
-$apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
+API Token - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 
-`https://api.telegram.org/bot<Api Token>/setWebhook?url=<your hosted file url>/bot.php`
+`https://api.telegram.org/bot<Api Token>/setWebhook?url=https://<your app name>.herokuapp.com/bot.php`
 
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
