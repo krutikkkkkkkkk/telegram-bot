@@ -12,7 +12,7 @@
     "env": {
         "API_TOKEN": {
             "description": "API Token , get it from @BotFather"
-        }
+        },
         "Chat": {
            "description": "Enter Your Channel or Chat Username eg- @reboot13"
     }
