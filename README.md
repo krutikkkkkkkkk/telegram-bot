@@ -1,9 +1,7 @@
 # Telegram Bot-Api
 
-Edit `bot.php` 
-$apiToken = `"xXxXxXXXXXXXXxXxxxx";`
-
-Repository of [@github_rbot](https://telegram.me/github_rbot) 
+## Heroku Deploy
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/reboot13-git/telegram-bot)
 
 Setting up webhook
 
@@ -12,8 +10,6 @@ $apiToken - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 `https://api.telegram.org/bot<Api Token>/setWebhook?url=<your hosted file url>/bot.php`
 
-## Tutorial
-[https://www.youtube.com/watch?v=KhQaiYwdnCA](https://www.youtube.com/watch?v=KhQaiYwdnCA)
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
