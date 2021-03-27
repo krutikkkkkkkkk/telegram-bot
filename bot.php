@@ -10,6 +10,7 @@
     $id = $update["message"]["from"]["id"];
     $username = $update["message"]["from"]["username"];
     $firstname = $update["message"]["from"]["first_name"];
+    $chatname = $_ENV['CHAT']; 
  /// for broadcasting in Channel
 $channel_id = "-100xxxxxxxxxx";
 
@@ -17,7 +18,7 @@ $channel_id = "-100xxxxxxxxxx";
 
     //Extact match Commands
     if($message == "/start"){
-        send_message($chat_id,$message_id, "Hey $firstname Join @worldbins1 \nNetwork - @world_network1 \nUse /cmds to view commands \nBot by @reboot13 ");
+        send_message($chat_id,$message_id, "Hey $firstname \nUse /cmds to view commands \n$chatname");
     }
 
     if($message == "/cmds" || $message == "/cmds@github_rbot"){
@@ -38,11 +39,16 @@ $channel_id = "-100xxxxxxxxxx";
           \n/toss (Random Heads or Tails)
           \n/syt <query> (Search on Youtube)
           \n/info (User Info)
+          \n/help 
           ");
     }
     if($message == "/date"){
         $date = date("d/m/y");
         send_message($chat_id,$message_id, $date);
+    }
+   if($message == "/help"){
+        $help = "Contact @reboot13_dev";
+        send_message($chat_id,$message_id, $help);
     }
    if($message == "/time"){
         $time = date("h:i a", time());
@@ -470,26 +476,26 @@ Checked By @$username ***");
 ///Send Message (Global)
     function send_message($chat_id,$message_id, $message){
         $text = urlencode($message);
-        $apiToken = "API_TOKEN"; 
+        $apiToken = $_ENV['BOT_TOKEN'];  
         file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text");
     }
     
 //Send Messages with Markdown (Global)
       function send_MDmessage($chat_id,$message_id, $message){
         $text = urlencode($message);
-        $apiToken = "API_TOKEN"; 
+        $apiToken = $_ENV['BOT_TOKEN'];  
         file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chat_id&reply_to_message_id=$message_id&text=$text&parse_mode=Markdown");
     }
 ///Send Message to Channel
       function send_Cmessage($channel_id, $message){
         $text = urlencode($message);
-        $apiToken = "API_TOKEN"; 
+        $apiToken = $_ENV['API_TOKEN'];
         file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$channel_id&text=$text");
     }
 
 //Send Dice (dynamic emoji)
 function sendDice($chat_id,$message_id, $message){
-        $apiToken = "API_TOKEN"; 
+        $apiToken = $_ENV['BOT_TOKEN'];  
         file_get_contents("https://api.telegram.org/bot$apiToken/sendDice?chat_id=$chat_id&reply_to_message_id=$message_id&text=$message");
     }
 
