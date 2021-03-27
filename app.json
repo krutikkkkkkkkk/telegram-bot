@@ -10,9 +10,12 @@
     "repository": "https://github.com/reboot13-git/telegram-bot",
     "success_url": "/",
     "env": {
-        "BOT_TOKEN": {
+        "API_TOKEN": {
             "description": "API Token , get it from @BotFather"
         }
+        "Chat": {
+           "description": "Enter Your Channel or Chat Username eg- @reboot13"
+    }
     },
     "formation": {
         "web": {
