@@ -10,6 +10,9 @@ API Token - Get Api Token from [@botfather](https://telegram.me/botfather)
 
 `https://api.telegram.org/bot<Api Token>/setWebhook?url=https://<your app name>.herokuapp.com/bot.php`
 
+### Video Tutorial
+
+https://www.youtube.com/watch?v=qIuGJEAAIHY
 
 ## Features Of [@github_rbot](https://telegram.me/github_rbot) 
 
