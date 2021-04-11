@@ -190,7 +190,7 @@ else {
     //Wheather API
 if(strpos($message, "/weather") === 0){
         $location = substr($message, 9);
-        $weatherToken = ""; ///get api key from openweathermap.org
+        $weatherToken = "89ef8a05b6c964f4cab9e2f97f696c81"; ///get api key from openweathermap.org
 
    $curl = curl_init();
    curl_setopt_array($curl, [
