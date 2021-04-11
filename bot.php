@@ -140,8 +140,6 @@ else {
 }
 
 }
-
-
 //Bin Lookup
 if(strpos($message, "!bin") === 0){
     $bin = substr($message, 5);
@@ -188,9 +186,6 @@ else {
     send_MDmessage($chat_id,$message_id, "***Enter Valid BIN***");
 }
 }
-
-
-
 
     //Wheather API
 if(strpos($message, "/weather") === 0){
