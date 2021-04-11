@@ -140,12 +140,14 @@ else {
 }
 
 }
+
+
 //Bin Lookup
 if(strpos($message, "!bin") === 0){
     $bin = substr($message, 5);
     $curl = curl_init();
     curl_setopt_array($curl, [
-    CURLOPT_URL => "https://bins-su-api.vercel.app/api/".$bin,
+    CURLOPT_URL => "https://binssuapi.vercel.app/api/".$bin,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -170,6 +172,7 @@ if(strpos($message, "!bin") === 0){
  $brand = $data['data']['vendor'];
  $level = $data['data']['level'];
  $type = $data['data']['type'];
+$flag = $data['data']['countryInfo']['emoji'];
  $result1 = $data['result'];
 
     if ($result1 == true) {
@@ -178,7 +181,7 @@ Bin: $bin
 Brand: $brand
 Level: $level
 Bank: $bank
-Country: $country
+Country: $country $flag
 Type:$type
 Checked By @$username ***");
     }
