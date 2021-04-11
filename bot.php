@@ -143,56 +143,51 @@ else {
 
 
 //Bin Lookup
-     if(strpos($message, "/bin") === 0){
-        $bin = substr($message, 5);
-   $curl = curl_init();
-   curl_setopt_array($curl, [
-	CURLOPT_URL => "https://lookup.binlist.net/".$bin,
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => [
-		"authority: lookup.binlist.net",
-		"accept: application/json",
-		"accept-language: en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7",
-		"origin: https://binlist.net",
-		"https://binlist.net/",
-		"sec-fetch-dest: empty",
-		"sec-fetch-site: same-site"
-	],
-]);
+if(strpos($message, "!bin") === 0){
+    $bin = substr($message, 5);
+    $curl = curl_init();
+    curl_setopt_array($curl, [
+    CURLOPT_URL => "https://bins-su-api.vercel.app/api/".$bin,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => [
+    "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "accept-language: en-GB,en-US;q=0.9,en;q=0.8,hi;q=0.7",
+    "sec-fetch-dest: document",
+    "sec-fetch-site: none",
+    "user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
+   ],
+   ]);
 
-$result = curl_exec($curl);
-curl_close($curl);
-$data = json_decode($result, true);
-$bank = $data['bank']['name'];
-$country = $data['country']['alpha2'];
-$currency = $data['country']['currency'];
-$emoji = $data['country']['emoji'];
-$scheme = $data['scheme'];
-$Brand = $data['brand'];
-$type = $data['type'];
-  if ($scheme != null) {
-        send_MDmessage($chat_id,$message_id, "***
-✅ Valid BIN
+ $result = curl_exec($curl);
+ curl_close($curl);
+ $data = json_decode($result, true);
+ $bank = $data['data']['bank'];
+ $country = $data['data']['country'];
+ $brand = $data['data']['vendor'];
+ $level = $data['data']['level'];
+ $type = $data['data']['type'];
+ $result1 = $data['result'];
+
+    if ($result1 == true) {
+    send_MDmessage($chat_id,$message_id, "***✅ Valid BIN
 Bin: $bin
-Type: $scheme
-Brand : $Brand
+Brand: $brand
+Level: $level
 Bank: $bank
-Country: $country $emoji
-Currency: $currency
-Credit/Debit:$type
+Country: $country
+Type:$type
 Checked By @$username ***");
     }
 else {
-    send_MDmessage($chat_id,$message_id, "Enter Valid BIN");
+    send_MDmessage($chat_id,$message_id, "***Enter Valid BIN***");
 }
-   }
-    
+}
 
 
 
