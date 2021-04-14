@@ -143,7 +143,7 @@ else {
 
 
 //Bin Lookup
-if(strpos($message, "!bin") === 0){
+if(strpos($message, "/bin") === 0){
     $bin = substr($message, 5);
     $curl = curl_init();
     curl_setopt_array($curl, [
