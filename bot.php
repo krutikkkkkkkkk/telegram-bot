@@ -24,24 +24,30 @@ $channel_id = "-100xxxxxxxxxx";
     if($message == "/cmds" || $message == "/cmds@github_rbot"){
         send_message($chat_id,$message_id, "
           /search <query> (Google search)
-          \n/smirror <name> (Search Movies/Series)
           \n/bin <bin> (Bin Data)
           \n/weather <name of your city> (Current weather Status)
-          \n/dice (dice emoji random 1-6)
+          \n/dice <dice emoji>
           \n/date (today's date)
           \n/dict <word> (Dictionary)
-          \n/time (current time)
+          \n/time (current time) 
           \n/git <username> (Github User Info)
           \n/repodl <username/repo_name> (Download Github Repository)
-          \n/btcrate (Current BTC Rate)
-	  \n/ethrate (Current ETH Rate)
-          \n/inbtc <USD> (Convert USD to BTC)
+          \n/cryptorate
           \n/toss (Random Heads or Tails)
           \n/syt <query> (Search on Youtube)
           \n/info (User Info)
-          \n/help 
           ");
     }
+      if($message == "/cryptorate" || $message == "/cryptorate@github_rbot"){
+      
+        send_message($chat_id,$message_id,"
+	 Use command to check current Crypto rates
+         \n/btcrate  Bitcoin rate
+         \n/ethrate  Etherum rate
+         \n/ltcrate  Litecoin rate
+         ");
+    }
+
     if($message == "/date"){
         $date = date("d/m/y");
         send_message($chat_id,$message_id, $date);
@@ -52,7 +58,7 @@ $channel_id = "-100xxxxxxxxxx";
     }
    if($message == "/time"){
         $time = date("h:i a", time());
-        send_message($chat_id,$message_id, $time);
+        send_message($chat_id,$message_id, "$time IST");
     }
 
   if($message == "/sc" || $message == "/si" || $message == "/st" || $message == "/cs" || $message == "/ua" || $message == "/at"  ){
@@ -93,16 +99,6 @@ $googleSearch = "[View On Web](https://www.google.com/search?q=$search)";
      send_MDmessage($chat_id,$message_id, $googleSearch);
     }
   }
-
-//World Mirror Search
-if (strpos($message, "/smirror") === 0) {
-$smovie = substr($message, 9);
-$smovie = preg_replace('/\s+/', '+', $smovie);
-$murl = "[Results-Go to World Mirror](https://witcher.lalbaake456.workers.dev/0:search?q=$smovie)";
-if ($smovie != null) {
-  send_MDmessage($chat_id,$message_id, $murl);
-}
-}
 
 if (strpos($message, "/repodl") === 0) {
 $gitdlurl = substr($message, 8);
@@ -304,45 +300,11 @@ else {
 }
     }
 
-    /// Conversion - USD => BTC
-
-if(strpos($message, "/inbtc") === 0){
-$inbtc = substr($message, 7);
-   $curl = curl_init();
-   curl_setopt_array($curl, [
-CURLOPT_URL => "https://blockchain.info/tobtc?currency=USD&value=$inbtc",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 50,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => [
-        "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
-        "cookie: __cfduid=d922bc7ae073ccd597580a4cfc5e562571614140229",
-        "referer: https://www.blockchain.com/",
-        "sec-fetch-dest: document",
-        "sec-fetch-mode: navigate",
-        "sec-fetch-site: cross-site",
-        "sec-fetch-user: ?1",
-        "upgrade-insecure-requests: 1",
-        "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
-  ],
-]);
-$valueinbtc = curl_exec($curl);
-curl_close($curl);
-$outvalue = json_decode($valueinbtc, true);
-
-send_MDmessage($chat_id,$message_id, "***USD = $inbtc \nBTC = $outvalue \nValue checked by @$username ***");
-}
-
-/// Bitcoin Rate
+ /// BTC rate
 if(strpos($message, "/btcrate") === 0){
    $curl = curl_init();
    curl_setopt_array($curl, [
-CURLOPT_URL => "https://blockchain.info/ticker",
+CURLOPT_URL => "https://api.coinbase.com/v2/prices/BTC-USD/spot",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
 	CURLOPT_ENCODING => "",
@@ -353,36 +315,24 @@ CURLOPT_URL => "https://blockchain.info/ticker",
 	CURLOPT_HTTPHEADER => [
         "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         "accept-encoding: gzip, deflate, br",
-        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
-        "cache-control: max-age=0",
-        "cookie: __cfduid=d922bc7ae073ccd597580a4cfc5e562571614140229",
-        "referer: https://www.blockchain.com/",
-        "sec-fetch-dest: document",
-        "sec-fetch-mode: navigate",
-        "sec-fetch-site: cross-site",
-        "sec-fetch-user: ?1",
-        "upgrade-insecure-requests: 1",
+        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7", 
 "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
   ],
 ]);
 $btcvalue = curl_exec($curl);
 curl_close($curl);
-$currentvalue = json_decode($btcvalue, true);
+$currentBTCvalue = json_decode($btcvalue, true);
 
-$valueinUSD = $currentvalue["USD"]["15m"];
-$valueinINR = $currentvalue["INR"]["15m"];
+$BTCvalueinUSD = $currentBTCvalue["data"]["amount"];
 
-send_MDmessage($chat_id,$message_id, "***1 BTC \nUSD = $valueinUSD $ \nINR = $valueinINR ₹ \nRate checked by @$username ***");
+send_MDmessage($chat_id,$message_id, "***1 BTC \nUSD = $BTCvalueinUSD $ \nRate checked by @$username ***");
 }
 
-
-/// Etherum Rate
+/// ETH rate
 if(strpos($message, "/ethrate") === 0){
    $curl = curl_init();
-   $ethToken = ""; /// Get Api key from etherscan.io
    curl_setopt_array($curl, [
-CURLOPT_URL => "https://api.etherscan.io/api?module=stats&action=ethprice&apikey=$ethToken",
-
+CURLOPT_URL => "https://api.coinbase.com/v2/prices/ETH-USD/spot",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
 	CURLOPT_ENCODING => "",
@@ -391,26 +341,50 @@ CURLOPT_URL => "https://api.etherscan.io/api?module=stats&action=ethprice&apikey
 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 	CURLOPT_CUSTOMREQUEST => "GET",
 	CURLOPT_HTTPHEADER => [
+        "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         "accept-encoding: gzip, deflate, br",
-"accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
-"cache-control: max-age=0",
-"cookie: __cfduid=d842bd50be4d4c3d6eef45691148f3fb81614487925; _ga=GA1.2.533709807.1614487927; _gid=GA1.2.138466737.1614487927",
-"sec-fetch-dest: document",
-"sec-fetch-mode: navigate",
-"sec-fetch-site: none",
-"sec-fetch-user: ?1",
-"upgrade-insecure-requests: 1",
-"user-agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Mobile Safari/537.36"
+        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7", 
+"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
   ],
 ]);
-$ethValue = curl_exec($curl);
+$ethvalue = curl_exec($curl);
 curl_close($curl);
-$ethCurrentValue = json_decode($ethValue, true);
+$currentETHvalue = json_decode($ethvalue, true);
 
-$ethValueInUSD = $ethCurrentValue["result"]["ethusd"];
-
+$ethValueInUSD = $currentETHvalue["data"]["amount"];
 send_MDmessage($chat_id,$message_id, "***1 ETH \nUSD = $ethValueInUSD $ \nRate checked by @$username ***");
 }
+
+/// LTC Rate
+if(strpos($message, "/ltcrate") === 0){
+   $curl = curl_init();
+   curl_setopt_array($curl, [
+CURLOPT_URL => "https://api.coinbase.com/v2/prices/LTC-USD/spot",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 50,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => [
+        "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "accept-encoding: gzip, deflate, br",
+        "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7", 
+"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
+  ],
+]);
+$ltcvalue = curl_exec($curl);
+curl_close($curl);
+$currentLTCvalue = json_decode($ltcvalue, true);
+
+$LTCvalueinUSD = $currentLTCvalue["data"]["amount"];
+
+send_MDmessage($chat_id,$message_id, "***1 LTC \nUSD = $LTCvalueinUSD $ \nRate checked by @$username ***");
+}
+
+	
+
 
 
 ///Dictionary API
