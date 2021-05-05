@@ -34,19 +34,17 @@ https://www.youtube.com/watch?v=qIuGJEAAIHY
 
 - [x] Google search (`/search <query>`)
 
-- [x] Youtube Search (`/syt <query>`)
-
-- [x] USD to BTC (Blockchain Exchange Rate) (`/inbtc <amount in USD>`)
+- [x] Youtube Search (`/syt <query>`) 
 
 - [x] BTC rate (`/btcrate`)
 
 - [x] ETH rate (`/ethrate`)
 
+- [x] LTC rate (`/ltcrate`)
+
 - [x] Download github Repository (`/repodl <username/repo_name>`)
 
 - [x] Github User Search (`/git <username>`)
-
-- [x] World Mirror Search (`/smirror <query>`)
 
 - [x] Broadcast (only selected ids) (`/broadcast <message>`)
 
