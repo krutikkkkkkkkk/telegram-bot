@@ -48,6 +48,8 @@ https://www.youtube.com/watch?v=qIuGJEAAIHY
 
 - [x] Broadcast (only selected ids) (`/broadcast <message>`)
 
+- [x] Currency exchange rate (`/xrate <currency_1> <currency_2>`)
+
 
 ### Reboot13
 
