@@ -11,10 +11,10 @@
     $username = $update["message"]["from"]["username"];
     $firstname = $update["message"]["from"]["first_name"];
     $chatname = $_ENV['CHAT']; 
- /// for broadcasting in Channel
-$channel_id = "-100xxxxxxxxxx";
 
-/////////////////////////
+    // For broadcasting in Channel
+    $channel_id = "-100xxxxxxxxxx";
+    // End
 
     //Extact match Commands
     if($message == "/start"){
@@ -36,6 +36,7 @@ $channel_id = "-100xxxxxxxxxx";
           \n/toss (Random Heads or Tails)
           \n/syt <query> (Search on Youtube)
           \n/info (User Info)
+          \n/xrate (Exchange rate)
           ");
     }
       if($message == "/cryptorate" || $message == "/cryptorate@github_rbot"){
@@ -192,7 +193,7 @@ if(strpos($message, "/weather") === 0){
 
    $curl = curl_init();
    curl_setopt_array($curl, [
-CURLOPT_URL => "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$weatherToken",
+    CURLOPT_URL => "http://api.openweathermap.org/data/2.5/weather?q=$location&appid=$weatherToken",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
 	CURLOPT_ENCODING => "",
@@ -502,5 +503,46 @@ function sendDice($chat_id,$message_id, $message){
         file_get_contents("https://api.telegram.org/bot$apiToken/sendDice?chat_id=$chat_id&reply_to_message_id=$message_id&text=$message");
     }
 
+/// Currency exchange rate
+if ( strpos($message, "/xrate") === 0 ) {
+    $currency1 = '';
+    $currency2 = '';
+
+    $msgArray = explode(' ', $message);
+    if ( empty($message[1]) || empty ($message[2])) {
+        send_MDmessage($chat_id,$message_id, "Please specify 2 currency codes, separeted by space.
+            E.g.: /xrate USD AUD");
+        return;
+    }
+
+    $currency1 = strtoupper($message[1]);
+    $currency2 = strtoupper($message[2]);
+
+    $curl = curl_init();
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://free.currconv.com/api/v7/" .
+            "convert?q={$currency1}_{$currency2},{$currency2}_{$currency1}" .
+            "&compact=ultra&apiKey=3a2765ab6403b6f224b2",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 50,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "accept-encoding: gzip, deflate, br",
+            "accept-language: en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
+            "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36"
+        ],
+    ]);
+    $result = curl_exec($curl);
+    curl_close($curl);
+
+    $response = array_values(json_decode($result, true));
+    $responseMessage = "{$currency1}-{$currency2}: {$response[0]}, {$currency2}-{$currency1}: {$response[1]}";
+    send_MDmessage($chat_id,$message_id, "$responseMessage $ \nRate checked by @$username ***");
+}
 
 ?>
