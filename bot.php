@@ -507,22 +507,24 @@ function sendDice($chat_id,$message_id, $message){
 if ( strpos($message, "/xrate") === 0 ) {
     $currency1 = '';
     $currency2 = '';
+    $url = '';
 
     $msgArray = explode(' ', $message);
-    if ( empty($message[1]) || empty ($message[2])) {
+    if ( empty($msgArray[1]) || empty ($msgArray[2])) {
         send_MDmessage($chat_id,$message_id, "Please specify 2 currency codes, separeted by space.
             E.g.: /xrate USD AUD");
         return;
     }
 
-    $currency1 = strtoupper($message[1]);
-    $currency2 = strtoupper($message[2]);
+    $currency1 = strtoupper($msgArray[1]);
+    $currency2 = strtoupper($msgArray[2]);
+    $url = "https://free.currconv.com/api/v7/" .
+        "convert?q={$currency1}_{$currency2},{$currency2}_{$currency1}" .
+        "&compact=ultra&apiKey=3a2765ab6403b6f224b2";
 
     $curl = curl_init();
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://free.currconv.com/api/v7/" .
-            "convert?q={$currency1}_{$currency2},{$currency2}_{$currency1}" .
-            "&compact=ultra&apiKey=3a2765ab6403b6f224b2",
+        CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_ENCODING => "",
@@ -540,9 +542,13 @@ if ( strpos($message, "/xrate") === 0 ) {
     $result = curl_exec($curl);
     curl_close($curl);
 
+    if (!$result) {
+        send_MDmessage($chat_id,$message_id, "Currencies not found. Please check the spelling and try again.");
+        return;
+    }
+
     $response = array_values(json_decode($result, true));
     $responseMessage = "{$currency1}-{$currency2}: {$response[0]}, {$currency2}-{$currency1}: {$response[1]}";
-    send_MDmessage($chat_id,$message_id, "$responseMessage $ \nRate checked by @$username ***");
+    send_MDmessage($chat_id,$message_id, $responseMessage);
 }
-
 ?>
